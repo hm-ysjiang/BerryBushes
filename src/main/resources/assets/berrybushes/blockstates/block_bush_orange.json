@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "age=0,solid=false": {"model": "berrybushes:block/berrybush_unready"},
+		"age=0,solid=true": {"model": "berrybushes:block/berrybush_unready"},
+        "age=1,solid=false": {"model": "berrybushes:block/berrybush_ready"},
+		"age=1,solid=true": {"model": "berrybushes:block/berrybush_ready"},
+        "age=2,solid=false": {"model": "berrybushes:block/berrybush_orange"},
+		"age=2,solid=true": {"model": "berrybushes:block/berrybush_orange"}
+    }
+}

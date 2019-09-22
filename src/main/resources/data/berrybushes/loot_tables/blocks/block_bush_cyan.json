@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:block",
+	"pools": 
+	[
+		{
+			"name": "pool",
+			"rolls": 1,
+			"entries": 
+			[
+				{
+					"type": "minecraft:item",
+					"name": "berrybushes:block_bush_cyan"
+				}
+			],
+
+			"conditions": 
+			[
+				{
+					"condition": "minecraft:survives_explosion"
+				}
+			]
+		}
+	]
+}

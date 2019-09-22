@@ -1,0 +1,22 @@
+{
+	"replace": false,
+	"values": 
+	[
+		"berrybushes:block_bush_white",
+		"berrybushes:block_bush_orange",
+		"berrybushes:block_bush_magenta",
+		"berrybushes:block_bush_lightblue",
+		"berrybushes:block_bush_yellow",
+		"berrybushes:block_bush_lime",
+		"berrybushes:block_bush_pink",
+		"berrybushes:block_bush_gray",
+		"berrybushes:block_bush_lightgray",
+		"berrybushes:block_bush_cyan",
+		"berrybushes:block_bush_purple",
+		"berrybushes:block_bush_blue",
+		"berrybushes:block_bush_brown",
+		"berrybushes:block_bush_green",
+		"berrybushes:block_bush_red",
+		"berrybushes:block_bush_black"
+	]
+}

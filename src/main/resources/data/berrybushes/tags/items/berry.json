@@ -1,0 +1,22 @@
+{
+	"replace": false,
+	"values": 
+	[
+		"berrybushes:item_berry_white",
+		"berrybushes:item_berry_orange",
+		"berrybushes:item_berry_magenta",
+		"berrybushes:item_berry_lightblue",
+		"berrybushes:item_berry_yellow",
+		"berrybushes:item_berry_lime",
+		"berrybushes:item_berry_pink",
+		"berrybushes:item_berry_gray",
+		"berrybushes:item_berry_lightgray",
+		"berrybushes:item_berry_cyan",
+		"berrybushes:item_berry_purple",
+		"berrybushes:item_berry_blue",
+		"berrybushes:item_berry_brown",
+		"berrybushes:item_berry_green",
+		"berrybushes:item_berry_red",
+		"berrybushes:item_berry_black"
+	]
+}
