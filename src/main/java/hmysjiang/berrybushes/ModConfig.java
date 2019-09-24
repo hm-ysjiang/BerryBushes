@@ -10,8 +10,6 @@ import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 import com.google.common.base.Predicate;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class ModConfig {
@@ -77,9 +75,8 @@ public class ModConfig {
 									  									"minecraft:deep_cold_ocean", 
 									  									"minecraft:deep_frozen_ocean", 
 									  									"minecraft:the_void"), new Predicate<Object>() {
-							      @SuppressWarnings("deprecation")
-								  @Override
-							      public boolean apply(@Nullable Object input) { return input != null && input instanceof String && Registry.BIOME.containsKey(new ResourceLocation((String) input)); }
+							      @Override
+							      public boolean apply(@Nullable Object input) { return input != null && input instanceof String; }
 						   	  });
 		
 	}

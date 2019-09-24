@@ -70,7 +70,7 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 		if (isMature(state)) {
 			if (!worldIn.isRemote) {
 				worldIn.setBlockState(pos, state.with(AGE, 1));
-				ItemEntity item = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, ModRegistry.bush_berry_mapping.get(this).getDefaultInstance());
+				ItemEntity item = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModRegistry.bush_berry_mapping.get(this)));
 				worldIn.addEntity(item);
 				item.onCollideWithPlayer(player);
 			}
@@ -84,7 +84,7 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 		if (isMature(state)) {
 			if (!worldIn.isRemote) {
 				worldIn.setBlockState(pos, state.with(AGE, 1));
-				ItemEntity item = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, ModRegistry.bush_berry_mapping.get(this).getDefaultInstance());
+				ItemEntity item = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModRegistry.bush_berry_mapping.get(this)));
 				worldIn.addEntity(item);
 				item.onCollideWithPlayer(player);
 			}
@@ -130,7 +130,7 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 		else if (ModConfig.mature_drop.get() && worldIn.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(pos.getX()-4, pos.getY()-4, pos.getZ()-4, pos.getX()+4, pos.getY()+4, pos.getZ()+4), IS_ITEM_BERRY).size() < 8) {
 			worldIn.setBlockState(pos, state.with(AGE, 0));
 			if (!worldIn.isRemote) {
-				ItemEntity item = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, ModRegistry.bush_berry_mapping.get(this).getDefaultInstance());
+				ItemEntity item = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModRegistry.bush_berry_mapping.get(this)));
 				worldIn.addEntity(item);
 			}
 		}
@@ -185,7 +185,7 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 		if (worldIn.isRemote)
 			return;
 		if (isMature(state))
-			worldIn.addEntity(new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, ModRegistry.bush_berry_mapping.get(this).getDefaultInstance()));
+			worldIn.addEntity(new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModRegistry.bush_berry_mapping.get(this))));
 	}
 	
 	@Override
