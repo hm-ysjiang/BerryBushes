@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "berrybushes:berry_salad"
+    ]
+  },
+  "criteria": {
+    "has_berry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "berrybushes:berry"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "berrybushes:berry_salad"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_berry",
+      "has_the_recipe"
+    ]
+  ]
+}

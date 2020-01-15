@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "berrybushes:orange_dye_from_berry"
+    ]
+  },
+  "criteria": {
+    "has_berry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "berrybushes:berry"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "berrybushes:orange_dye_from_berry"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_berry",
+      "has_the_recipe"
+    ]
+  ]
+}

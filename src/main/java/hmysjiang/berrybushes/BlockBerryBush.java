@@ -38,6 +38,9 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
 
 public class BlockBerryBush extends Block implements IGrowable, IPlantable {
@@ -201,6 +204,7 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 	}
 	
 	@Override
+	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		while (worldIn.getBlockState(pos.up()).getBlock() instanceof BlockBerryBush)
 			pos = pos.up();
@@ -216,8 +220,10 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 	@Override
 	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
 		super.tick(state, worldIn, pos, random);
-		if (random.nextInt(ModConfig.growth_rate.get()) == 0)
+		if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(ModConfig.growth_rate.get()) == 0)) {
 			grow(worldIn, random, pos, state);
+			ForgeHooks.onCropsGrowPost(worldIn, pos, state);
+		}
 	}
 
 	public BlockState getRandomSpawnState(Random rand) {

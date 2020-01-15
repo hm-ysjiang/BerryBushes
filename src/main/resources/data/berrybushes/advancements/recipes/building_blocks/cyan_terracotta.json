@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "berrybushes:cyan_terracotta"
+    ]
+  },
+  "criteria": {
+    "has_terracotta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:terracotta"
+          }
+        ]
+      }
+    },
+    "has_berry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "berrybushes:berry"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "berrybushes:cyan_terracotta"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_terracotta",
+      "has_berry",
+      "has_the_recipe"
+    ]
+  ]
+}

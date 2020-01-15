@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "berrybushes:magenta_dye_from_blue_red_pink"
+    ]
+  },
+  "criteria": {
+    "has_berry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "berrybushes:berry"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "berrybushes:magenta_dye_from_blue_red_pink"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_berry",
+      "has_the_recipe"
+    ]
+  ]
+}

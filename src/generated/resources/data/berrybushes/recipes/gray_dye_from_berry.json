@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "berry_dyes",
+  "ingredients": [
+    {
+      "item": "berrybushes:item_berry_gray"
+    }
+  ],
+  "result": {
+    "item": "minecraft:gray_dye"
+  }
+}

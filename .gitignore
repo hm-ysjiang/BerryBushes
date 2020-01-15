@@ -31,3 +31,4 @@ gradle/wrapper/gradle-wrapper.jar
 README.txt
 CREDITS.txt
 LICENSE.txt
+src/generated/resources/.cache/cache

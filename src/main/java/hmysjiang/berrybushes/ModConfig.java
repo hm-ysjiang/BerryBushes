@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import javax.annotation.Nullable;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
@@ -29,7 +29,7 @@ public class ModConfig {
 	public static void init(ForgeConfigSpec.Builder builder) {
 		
 		spawn_rate = builder.comment(" This determines the spawn rate of berry bushes (1/n). Set this to 0 will disable the spawn.")
-							.defineInRange("spawn.spawn_rate", 25, 0, 50);
+							.defineInRange("spawn.spawn_rate", 64, 0, 256);
 		
 		spawn_min = builder.comment(" This defines the min y that a bush is able to spawn at")
 						   .defineInRange("spawn.height.spawn_min", 54, 0, 256);

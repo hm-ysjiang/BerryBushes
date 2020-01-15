@@ -21,7 +21,7 @@ public class FeatureBushGen extends Feature<NoFeatureConfig> {
 		if (ModConfig.spawn_rate.get() == 0 || ModConfig.banned_dim.get().contains(worldIn.getDimension().getType().getId()))
 			return true;
 		if (rand.nextInt(ModConfig.spawn_rate.get()) == 0) {
-			for (int i = 0; i < 10; ++i) {
+			for (int i = 0; i < 7; ++i) {
 				BlockPos blockpos = getFirstAirBlock(worldIn, pos.add(rand.nextInt(4) - rand.nextInt(4), -pos.getY(), rand.nextInt(4) - rand.nextInt(4)), ModConfig.spawn_max.get());
 				if (blockpos.getY() < ModConfig.spawn_min.get() || blockpos.getY() > ModConfig.spawn_max.get())
 					continue;
