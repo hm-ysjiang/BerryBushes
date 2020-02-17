@@ -3,7 +3,7 @@
 	"values": 
 	[
 		"#berrybushes:bushes",
-		"#minecraft:dirt_like",
+		"#forge:dirt",
 		"minecraft:water"
 	]
 }

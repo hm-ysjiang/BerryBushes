@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -177,6 +179,11 @@ public class ModRegistry {
 								   BUSH_GREEN,
 								   BUSH_RED,
 								   BUSH_BLACK);
+			
+			// Set Berry Bush render layer
+			Map<Block, RenderType> bushRenders = new HashMap<>();
+			bushes.forEach(block -> bushRenders.put(block, RenderType.getCutoutMipped()));
+			bushRenders.forEach(RenderTypeLookup::setRenderLayer);
 		}
 		
 	}

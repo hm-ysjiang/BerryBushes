@@ -5,9 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
@@ -56,8 +54,9 @@ public class BerryBushes {
 		ModRegistry.bush_berry_mapping.put(ModRegistry.Blocks.BUSH_BLACK, ModRegistry.Items.BERRY_BLACK);
 		
 		for (Biome biome: Registry.BIOME) {
-			if (!ModConfig.banned_biome.get().contains(biome.getRegistryName().toString()))
-				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModRegistry.Features.BUSH, new NoFeatureConfig(), Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+			if (!ModConfig.banned_biome.get().contains(biome.getRegistryName().toString())) {
+				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModRegistry.Features.BUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+			}
 		}
 	}
 	

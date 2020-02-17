@@ -23,7 +23,7 @@ import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
@@ -38,6 +38,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeHooks;
@@ -53,13 +54,12 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 	private static final Predicate<ItemEntity> IS_ITEM_BERRY = item -> { return ModRegistry.Items.berries.contains(item.getItem().getItem()); };
 	
 	public BlockBerryBush() {
-		super(Properties.create(Material.PLANTS).hardnessAndResistance(0.5F).sound(SoundType.PLANT).tickRandomly());
-		
+		super(Properties.create(Material.PLANTS).hardnessAndResistance(0.5F).sound(SoundType.PLANT).tickRandomly().notSolid());
 		setDefaultState(this.stateContainer.getBaseState().with(AGE, 0).with(SOLID, false));
 	}
 	
 	@Override
-	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn,
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn,
 			BlockRayTraceResult hit) {
 		if (ItemTags.LOGS.contains(player.getHeldItem(handIn).getItem()) && !state.get(SOLID)) {
 			if (!player.isCreative())
@@ -68,7 +68,7 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 			if (!worldIn.isRemote) {
 				worldIn.setBlockState(pos, state.with(SOLID, true));
 			}
-			return true;
+			return ActionResultType.SUCCESS;
 		}
 		if (isMature(state)) {
 			if (!worldIn.isRemote) {
@@ -77,9 +77,9 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 				worldIn.addEntity(item);
 				item.onCollideWithPlayer(player);
 			}
-			return true;
+			return ActionResultType.SUCCESS;
 		}
-		return false;
+		return ActionResultType.PASS;
 	}
 	
 	@Override
@@ -126,7 +126,7 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 	}
 
 	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, BlockState state) {
+	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
 		if (canGrow(worldIn, pos, state, false)) {
 			worldIn.setBlockState(pos, state.cycle(AGE));
 		}
@@ -137,11 +137,6 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 				worldIn.addEntity(item);
 			}
 		}
-	}
-
-	@Override
-	public BlockRenderLayer getRenderLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 	
 	@Override
@@ -218,7 +213,7 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 	
 	@SuppressWarnings("deprecation")
 	@Override
-	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		super.tick(state, worldIn, pos, random);
 		if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(ModConfig.growth_rate.get()) == 0)) {
 			grow(worldIn, random, pos, state);
@@ -228,6 +223,27 @@ public class BlockBerryBush extends Block implements IGrowable, IPlantable {
 
 	public BlockState getRandomSpawnState(Random rand) {
 		return this.getDefaultState().with(AGE, rand.nextInt(2) + 1);
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public float getAmbientOcclusionLightValue(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		return 0.75F;
+	}
+
+	public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
+		return true;
+	}
+
+	public boolean causesSuffocation(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		return false;
+	}
+
+	public boolean isNormalCube(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		return false;
+	}
+
+	public boolean canEntitySpawn(BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type) {
+		return false;
 	}
 	
 }
