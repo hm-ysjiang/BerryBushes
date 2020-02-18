@@ -1,11 +1,14 @@
 package hmysjiang.berrybushes;
 
+import hmysjiang.berrybushes.proxy.ClientProxy;
+import hmysjiang.berrybushes.proxy.IProxy;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
@@ -17,6 +20,7 @@ import net.minecraftforge.fml.loading.FMLPaths;
 public class BerryBushes {
 	
 	public static BerryBushes INSTANCE_REF;
+	public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new IProxy() {});
 	public BerryBushes() {
 		INSTANCE_REF = this;
 		
