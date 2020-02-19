@@ -5,7 +5,7 @@ loaderVersion="[31,)" #mandatory (31 is current forge version)
 displayName="Berry Bushes" #mandatory
 modId="berrybushes" #mandatory
 
-version="1.1.0" #mandatory
+version="1.1.1" #mandatory
 
 displayURL="https://www.curseforge.com/minecraft/mc-mods/berry-bushes/" #optional
 issueTrackerURL="https://github.com/hm-ysjiang/BerryBushes/issues/" #optional
